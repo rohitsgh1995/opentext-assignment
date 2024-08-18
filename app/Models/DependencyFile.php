@@ -21,4 +21,16 @@ class DependencyFile extends Model
         $this->status = 'processing';
         $this->save();
     }
+
+    public function isFailed(): void
+    {
+        $this->status = 'failed';
+        $this->save();
+    }
+
+    public function remarks(string $remarks): void
+    {
+        $this->remarks = $remarks;
+        $this->save();
+    }
 }

@@ -7,11 +7,13 @@ use App\Jobs\SendFileToDebricked;
 
 class DebrickedService
 {
-    public function forwardToDebricked(int $fileId): void
+    public function forwardToDebricked(array $files): void
     {
-        $dependencyFile = DependencyFile::find($fileId);
-        $dependencyFile->isProcessing();
+        foreach ($files as $file) {
+            $dependencyFile = DependencyFile::find($file->id);
+            $dependencyFile->isProcessing();
 
-        SendFileToDebricked::dispatch($dependencyFile);
+            SendFileToDebricked::dispatch($dependencyFile);
+        }
     }
 }

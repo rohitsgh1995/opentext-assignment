@@ -19,9 +19,7 @@ class FileUploadController extends Controller
 
             $uploads = FileService::upload($files);
 
-            foreach ($uploads as $upload) {
-                DebrickedService::forwardToDebricked($upload->id);
-            }
+            DebrickedService::forwardToDebricked($uploads);
 
             return response()->json(['message' => 'Files uploaded successfully.'], 200);
         } catch (\Exception $e) {
