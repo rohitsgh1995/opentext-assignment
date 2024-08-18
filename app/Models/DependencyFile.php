@@ -15,4 +15,10 @@ class DependencyFile extends Model
         'vulnerabilities',
         'remarks',
     ];
+    
+    public function isProcessing(): void
+    {
+        $this->status = 'processing';
+        $this->save();
+    }
 }

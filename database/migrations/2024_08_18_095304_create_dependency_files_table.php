@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('dependency_files', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->string('status')->default('pending')->comment('pending, uploaded, failed, analyzed');
+            $table->string('status')->default('pending')->comment('pending, processing, failed, analyzed');
             $table->string('vulnerabilities')->nullable();
             $table->string('remarks')->nullable();
             $table->timestamps();
